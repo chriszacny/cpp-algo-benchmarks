@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <climits>
 #include "Program.h"
 using namespace std;
 

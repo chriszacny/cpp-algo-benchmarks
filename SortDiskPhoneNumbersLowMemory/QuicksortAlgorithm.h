@@ -21,13 +21,11 @@ class QuicksortAlgorithm : public ISortingAlgorithm
 {
     public:
         void sort(const char* pathToFile, const char* outputFile) override;
-        const char* getOutputFileName(const char* pathToFile) override;
+        string getOutputFileName(const char* pathToFile) override;
     private:
-        void swap(vector<int> &list, int firstIdx, int secondIdx);
-        int partition(vector<int> &list, int startIdx, int endIdx);
-        void easyQuicksort(vector<int> &list, int startIdx, int endIdx);
         void readDataIntoVector(vector<int> &toSort, int currentPass, const char* pathToFile);
-        void writeDataToOutputFile(vector<int> &toSort, const char* outputFile);
+        void quicksort(vector<int> &list, int l, int u);
+
 };
 
 #endif /* defined(__SortDiskPhoneNumbersLowMemory__QuicksortAlgorithm__) */

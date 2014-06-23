@@ -12,8 +12,8 @@
 enum SortingAlgorithmEnum
 {
     Quicksort,
-    BitMapStructure,
-    StandardSort
+    SystemSortSort,
+    BitMapStructure
 };
 
 #endif

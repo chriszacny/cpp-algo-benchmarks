@@ -13,6 +13,8 @@
 #include "ISortingAlgorithm.h"
 #include "PhoneNumberInputFile.h"
 #include "QuicksortAlgorithm.h"
+#include "SystemSortAlgorithm.h"
+#include "BitmapSortAlgorithm.h"
 #include <map>
 #include <string>
 

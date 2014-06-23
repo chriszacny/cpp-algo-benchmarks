@@ -12,43 +12,42 @@ using namespace std;
 const int PASSES = 40;
 const int RANGE = 250000;
 
-void QuicksortAlgorithm::swap(vector<int> &list, int firstIdx, int secondIdx)
+void QuicksortAlgorithm::quicksort(vector<int> &list, int l, int u)
 {
-    int temp = list[firstIdx];
-    list[firstIdx] = list[secondIdx];
-    list[secondIdx] = temp;
-}
-
-int QuicksortAlgorithm::partition(vector<int> &list, int startIdx, int endIdx)
-{
-    int pivot = list[endIdx];
-    int i = startIdx - 1;
-    for (int j = startIdx; j < endIdx; j++)
+    if (l >= u)
     {
-        if (list[j] <= pivot)
+        return;
+    }
+    int t = list[l];
+    int i = l;
+    int j = u + 1;
+    while(1 == 1)
+    {
+        do
         {
             i = i + 1;
-            swap(list, i, j);
+        } while (i <= u && list[i] < t);
+        
+        do
+        {
+            j = j - 1;
+        } while (list[j] > t);
+        
+        if (i > j)
+        {
+            break;
         }
+        swap(list[i] , list[j]);
     }
-    swap(list, i + 1, endIdx);
-    return i + 1;
+    swap(list[l], list[j]);
+    quicksort(list, l, j - 1);
+    quicksort(list, j + 1, u);
 }
 
-void QuicksortAlgorithm::easyQuicksort(vector<int> &list, int startIdx, int endIdx)
-{
-    if (startIdx < endIdx)
-    {
-        int q = partition(list, startIdx, endIdx);
-        easyQuicksort(list, startIdx, q - 1);
-        easyQuicksort(list, q + 1, endIdx);
-    }
-}
- 
 void QuicksortAlgorithm::readDataIntoVector(vector<int> &toSort, int currentPass, const char* pathToFile)
 {
-    int lowerBound = currentPass * RANGE;
-    int upperBound = ((currentPass + 1) * RANGE) - 1;
+    long lowerBound = currentPass * RANGE;
+    long upperBound = ((currentPass + 1) * RANGE) - 1;
     ifstream inputfileStream(pathToFile);
     string line;
     
@@ -66,26 +65,11 @@ void QuicksortAlgorithm::readDataIntoVector(vector<int> &toSort, int currentPass
     }
 }
 
-void QuicksortAlgorithm::writeDataToOutputFile(vector<int> &toSort, const char* outputFile)
-{
-    ofstream outputfileStream;
-    outputfileStream.open(outputFile, ofstream::out | ofstream::app);
-    if (outputfileStream.is_open())
-    {
-        for (int i = 0; i < toSort.size(); i++)
-        {
-            outputfileStream << toSort[i] << endl;
-        }
-    }
-    outputfileStream.close();
-}
-
-const char* QuicksortAlgorithm::getOutputFileName(const char* pathToFile)
+string QuicksortAlgorithm::getOutputFileName(const char* pathToFile)
 {
     string outputFileString = string(pathToFile) + ".quicksort.out";
-    const char* outputFile = outputFileString.c_str();
-    cout << "Calculated output file is: " << outputFile << endl;
-    return outputFile;
+    cout << "Calculated output file is: " << outputFileString << endl;
+    return outputFileString;
 }
 
 void QuicksortAlgorithm::sort(const char* pathToFile, const char* outputFile)
@@ -96,7 +80,8 @@ void QuicksortAlgorithm::sort(const char* pathToFile, const char* outputFile)
     {
         vector<int> toSort;
         readDataIntoVector(toSort, i, pathToFile);
-        easyQuicksort(toSort, 0, toSort.size() - 1);
+        quicksort(toSort, 0, toSort.size() - 1);
         writeDataToOutputFile(toSort, outputFile);
     }
+
 }

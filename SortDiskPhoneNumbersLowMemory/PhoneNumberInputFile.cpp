@@ -14,13 +14,17 @@ PhoneNumberInputFile::PhoneNumberInputFile(const char* pathToFile)
     _pathToFile = pathToFile;
     ISortingAlgorithm* quickSort = new QuicksortAlgorithm();
     _sortingAlgorithms[SortingAlgorithmEnum::Quicksort] = quickSort;
+    ISortingAlgorithm* systemSort = new SystemSortAlgorithm();
+    _sortingAlgorithms[SortingAlgorithmEnum::SystemSortSort] = systemSort;
+    ISortingAlgorithm* bitmapSort = new BitmapSortAlgorithm();
+    _sortingAlgorithms[SortingAlgorithmEnum::BitMapStructure] = bitmapSort;
 }
 
 void PhoneNumberInputFile::sort(SortingAlgorithmEnum sortingAlgorithm)
 {
-    const char* outputFile = _sortingAlgorithms[sortingAlgorithm]->getOutputFileName(_pathToFile);
-    removeExistingFileIfItExists(outputFile);
-    _sortingAlgorithms[sortingAlgorithm]->sort(_pathToFile, outputFile);
+    string outputFile = _sortingAlgorithms[sortingAlgorithm]->getOutputFileName(_pathToFile);
+    removeExistingFileIfItExists(outputFile.c_str());
+    _sortingAlgorithms[sortingAlgorithm]->sort(_pathToFile, outputFile.c_str());
 }
 
 void PhoneNumberInputFile::removeExistingFileIfItExists(const char* outputFile)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8344C9BD1958C7190088D4D2 /* SystemSortAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8344C9BB1958C7190088D4D2 /* SystemSortAlgorithm.cpp */; };
+		8344C9C31958CA8C0088D4D2 /* BitmapSortAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8344C9C11958CA8C0088D4D2 /* BitmapSortAlgorithm.cpp */; };
 		83D657F919540560004D45AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D657F819540560004D45AA /* main.cpp */; };
 		83D657FB19540560004D45AA /* SortDiskPhoneNumbersLowMemory.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83D657FA19540560004D45AA /* SortDiskPhoneNumbersLowMemory.1 */; };
 		83D65806195407FC004D45AA /* Program.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D65804195407FC004D45AA /* Program.cpp */; };
@@ -29,6 +31,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8344C9BB1958C7190088D4D2 /* SystemSortAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SystemSortAlgorithm.cpp; sourceTree = "<group>"; };
+		8344C9BC1958C7190088D4D2 /* SystemSortAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSortAlgorithm.h; sourceTree = "<group>"; };
+		8344C9C11958CA8C0088D4D2 /* BitmapSortAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BitmapSortAlgorithm.cpp; sourceTree = "<group>"; };
+		8344C9C21958CA8C0088D4D2 /* BitmapSortAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapSortAlgorithm.h; sourceTree = "<group>"; };
 		83D657F519540560004D45AA /* SortDiskPhoneNumbersLowMemory */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SortDiskPhoneNumbersLowMemory; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D657F819540560004D45AA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		83D657FA19540560004D45AA /* SortDiskPhoneNumbersLowMemory.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = SortDiskPhoneNumbersLowMemory.1; sourceTree = "<group>"; };
@@ -84,6 +90,10 @@
 				83D6580C19544E7E004D45AA /* ISortingAlgorithm.h */,
 				83D658111954E7B1004D45AA /* QuicksortAlgorithm.cpp */,
 				83D658121954E7B1004D45AA /* QuicksortAlgorithm.h */,
+				8344C9BB1958C7190088D4D2 /* SystemSortAlgorithm.cpp */,
+				8344C9BC1958C7190088D4D2 /* SystemSortAlgorithm.h */,
+				8344C9C11958CA8C0088D4D2 /* BitmapSortAlgorithm.cpp */,
+				8344C9C21958CA8C0088D4D2 /* BitmapSortAlgorithm.h */,
 			);
 			path = SortDiskPhoneNumbersLowMemory;
 			sourceTree = "<group>";
@@ -143,7 +153,9 @@
 				83D657F919540560004D45AA /* main.cpp in Sources */,
 				83D658131954E7B1004D45AA /* QuicksortAlgorithm.cpp in Sources */,
 				83D6580D19544E7E004D45AA /* ISortingAlgorithm.cpp in Sources */,
+				8344C9BD1958C7190088D4D2 /* SystemSortAlgorithm.cpp in Sources */,
 				83D6580919541032004D45AA /* PhoneNumberInputFile.cpp in Sources */,
+				8344C9C31958CA8C0088D4D2 /* BitmapSortAlgorithm.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +265,7 @@
 				83D6580019540560004D45AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
