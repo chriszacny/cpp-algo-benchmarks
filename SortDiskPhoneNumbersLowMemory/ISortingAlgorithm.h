@@ -13,6 +13,7 @@ class ISortingAlgorithm
 {
     public:
         virtual void sort(const char* pathToFile, const char* outputFile) = 0;
+        virtual const char* getOutputFileName(const char* pathToFile) = 0;
 };
 
 #endif /* defined(__SortDiskPhoneNumbersLowMemory__ISortingAlgorithm__) */

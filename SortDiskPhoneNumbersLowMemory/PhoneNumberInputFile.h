@@ -20,9 +20,9 @@ class PhoneNumberInputFile
 {
     public:
         PhoneNumberInputFile(const char* pathToFile);
-        int getRecordCount();
         void sort(SortingAlgorithmEnum sortingAlgorithm);
     private:
+        void removeExistingFileIfItExists(const char* outputFile);
         const char* _pathToFile;
         int* _recordCount;
         std::map<SortingAlgorithmEnum, ISortingAlgorithm*> _sortingAlgorithms;    

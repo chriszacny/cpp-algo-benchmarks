@@ -15,17 +15,19 @@
 #include <string>
 #include <stdio.h>
 #include "ISortingAlgorithm.h"
+using namespace std;
 
 class QuicksortAlgorithm : public ISortingAlgorithm
 {
     public:
         void sort(const char* pathToFile, const char* outputFile) override;
+        const char* getOutputFileName(const char* pathToFile) override;
     private:
-        void swap(std::vector<int> &list, int firstIdx, int secondIdx);
-        int partition(std::vector<int> &list, int startIdx, int endIdx);
-        void easyQuicksort(std::vector<int> &list, int startIdx, int endIdx);
-        void readDataIntoVector(std::vector<int> &toSort, int currentPass, const char* pathToFile);
-        void writeDataToOutputFile(std::vector<int> &toSort, const char* outputFile);
+        void swap(vector<int> &list, int firstIdx, int secondIdx);
+        int partition(vector<int> &list, int startIdx, int endIdx);
+        void easyQuicksort(vector<int> &list, int startIdx, int endIdx);
+        void readDataIntoVector(vector<int> &toSort, int currentPass, const char* pathToFile);
+        void writeDataToOutputFile(vector<int> &toSort, const char* outputFile);
 };
 
 #endif /* defined(__SortDiskPhoneNumbersLowMemory__QuicksortAlgorithm__) */

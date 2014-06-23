@@ -7,18 +7,19 @@
 //
 
 #include "QuicksortAlgorithm.h"
+using namespace std;
 
 const int PASSES = 40;
 const int RANGE = 250000;
 
-void QuicksortAlgorithm::swap(std::vector<int> &list, int firstIdx, int secondIdx)
+void QuicksortAlgorithm::swap(vector<int> &list, int firstIdx, int secondIdx)
 {
     int temp = list[firstIdx];
     list[firstIdx] = list[secondIdx];
     list[secondIdx] = temp;
 }
 
-int QuicksortAlgorithm::partition(std::vector<int> &list, int startIdx, int endIdx)
+int QuicksortAlgorithm::partition(vector<int> &list, int startIdx, int endIdx)
 {
     int pivot = list[endIdx];
     int i = startIdx - 1;
@@ -34,7 +35,7 @@ int QuicksortAlgorithm::partition(std::vector<int> &list, int startIdx, int endI
     return i + 1;
 }
 
-void QuicksortAlgorithm::easyQuicksort(std::vector<int> &list, int startIdx, int endIdx)
+void QuicksortAlgorithm::easyQuicksort(vector<int> &list, int startIdx, int endIdx)
 {
     if (startIdx < endIdx)
     {
@@ -44,19 +45,18 @@ void QuicksortAlgorithm::easyQuicksort(std::vector<int> &list, int startIdx, int
     }
 }
  
-void QuicksortAlgorithm::readDataIntoVector(std::vector<int> &toSort, int currentPass, const char* pathToFile)
+void QuicksortAlgorithm::readDataIntoVector(vector<int> &toSort, int currentPass, const char* pathToFile)
 {
     int lowerBound = currentPass * RANGE;
     int upperBound = ((currentPass + 1) * RANGE) - 1;
-    std::cout<<"Sorting items in file: [ "<<lowerBound<<" - "<<upperBound<<" ]"<<std::endl;
-    std::ifstream inputfileStream(pathToFile);
-    std::string line;
+    ifstream inputfileStream(pathToFile);
+    string line;
     
     if (inputfileStream.is_open())
     {
-        while (std::getline(inputfileStream, line))
+        while (getline(inputfileStream, line))
         {
-            int val = std::atoi(line.c_str());
+            int val = atoi(line.c_str());
             if (val >= lowerBound && val <= upperBound)
             {
                 toSort.push_back(val);
@@ -66,39 +66,37 @@ void QuicksortAlgorithm::readDataIntoVector(std::vector<int> &toSort, int curren
     }
 }
 
-void QuicksortAlgorithm::writeDataToOutputFile(std::vector<int> &toSort, const char* outputFile)
+void QuicksortAlgorithm::writeDataToOutputFile(vector<int> &toSort, const char* outputFile)
 {
-    std::ofstream outputfileStream;
-    std::cout << "Opening: " << outputFile << std::endl;
-    outputfileStream.open(outputFile, std::ofstream::out | std::ofstream::app);
+    ofstream outputfileStream;
+    outputfileStream.open(outputFile, ofstream::out | ofstream::app);
     if (outputfileStream.is_open())
     {
         for (int i = 0; i < toSort.size(); i++)
         {
-            std::cout << toSort[i] << std::endl;
-            outputfileStream << toSort[i] << std::endl;
+            outputfileStream << toSort[i] << endl;
         }
     }
     outputfileStream.close();
 }
 
+const char* QuicksortAlgorithm::getOutputFileName(const char* pathToFile)
+{
+    string outputFileString = string(pathToFile) + ".quicksort.out";
+    const char* outputFile = outputFileString.c_str();
+    cout << "Calculated output file is: " << outputFile << endl;
+    return outputFile;
+}
+
 void QuicksortAlgorithm::sort(const char* pathToFile, const char* outputFile)
 {
-    std::cout<<"Sorting algorithm to use is: Quicksort. Starting sort..."<<std::endl;
+    cout << "Sorting algorithm to use is: Quicksort 40 pass algorithm. Starting sort..." << endl;
     // Make 40 passes over input file. Pass 1: Sort 0-249,999, Pass 2: Sort 250,000-499,000, etc. Use Quicksort.
     for (int i = 0; i < PASSES; i++)
     {
-        //std::cout<<"Beginning pass "<<i+1<<std::endl;
-        std::vector<int> toSort;
+        vector<int> toSort;
         readDataIntoVector(toSort, i, pathToFile);
-        //std::cout<<"Read in complete. Current list size: "<<toSort.size()<<std::endl;
         easyQuicksort(toSort, 0, toSort.size() - 1);
-        for (int j = 0; j < toSort.size(); j++)
-        {
-            std::cout<<toSort[j]<<std::endl;
-        }
-        //std::cout<<toSort.size()<<std::endl;
         writeDataToOutputFile(toSort, outputFile);
-        //std::cout<<"Pass "<<i+1<<" complete."<<std::endl;
     }
 }

@@ -7,6 +7,7 @@
 //
 
 #include "PhoneNumberInputFile.h"
+using namespace std;
 
 PhoneNumberInputFile::PhoneNumberInputFile(const char* pathToFile)
 {
@@ -17,19 +18,13 @@ PhoneNumberInputFile::PhoneNumberInputFile(const char* pathToFile)
 
 void PhoneNumberInputFile::sort(SortingAlgorithmEnum sortingAlgorithm)
 {
-    std::string outputFileString = std::string(_pathToFile) + ".quicksort.out";
-    const char* outputFile = outputFileString.c_str();
-    std::cout << "Calculated output file is: " << outputFile << std::endl;
-    std::cout << "test" << _pathToFile << std::endl;
-    std::remove(outputFile);
+    const char* outputFile = _sortingAlgorithms[sortingAlgorithm]->getOutputFileName(_pathToFile);
+    removeExistingFileIfItExists(outputFile);
     _sortingAlgorithms[sortingAlgorithm]->sort(_pathToFile, outputFile);
 }
 
-int PhoneNumberInputFile::getRecordCount()
+void PhoneNumberInputFile::removeExistingFileIfItExists(const char* outputFile)
 {
-    if (!_recordCount)
-    {
-        *_recordCount = 1;
-    }
-    return *_recordCount;
+    remove(outputFile);
 }
+
