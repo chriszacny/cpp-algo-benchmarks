@@ -25,6 +25,7 @@ class QuicksortAlgorithm : public ISortingAlgorithm
     private:
         void readDataIntoVector(vector<int> &toSort, int currentPass, const char* pathToFile);
         void quicksort(vector<int> &list, int l, int u);
+        int _pushbackCount;
 
 };
 

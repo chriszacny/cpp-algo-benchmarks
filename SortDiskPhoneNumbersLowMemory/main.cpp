@@ -23,6 +23,7 @@ bool validate(int argc)
 int main(int argc, const char * argv[])
 {
     cout << "Welcome to the low-memory file sorting profiler." << endl;
+    cout << "Size of int on this machine: " << sizeof(int) << endl;
     bool validationSucceeded = validate(argc);
     int retVal = 0;
     if (validationSucceeded)

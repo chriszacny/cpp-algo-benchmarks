@@ -59,10 +59,12 @@ void QuicksortAlgorithm::readDataIntoVector(vector<int> &toSort, int currentPass
             if (val >= lowerBound && val <= upperBound)
             {
                 toSort.push_back(val);
+                _pushbackCount++;
             }
         }
         inputfileStream.close();
     }
+    cout << "Pushed back " << _pushbackCount << " times." << endl;
 }
 
 string QuicksortAlgorithm::getOutputFileName(const char* pathToFile)
@@ -74,8 +76,9 @@ string QuicksortAlgorithm::getOutputFileName(const char* pathToFile)
 
 void QuicksortAlgorithm::sort(const char* pathToFile, const char* outputFile)
 {
-    cout << "Sorting algorithm to use is: Quicksort 40 pass algorithm. Starting sort..." << endl;
-    // Make 40 passes over input file. Pass 1: Sort 0-249,999, Pass 2: Sort 250,000-499,000, etc. Use Quicksort.
+    cout << "Sorting algorithm to use is: Quicksort multi-pass algorithm. Starting sort..." << endl;
+    // Make several passes over input file. Use Quicksort.
+    _pushbackCount = 0;
     for (int i = 0; i < PASSES; i++)
     {
         vector<int> toSort;
@@ -83,5 +86,4 @@ void QuicksortAlgorithm::sort(const char* pathToFile, const char* outputFile)
         quicksort(toSort, 0, toSort.size() - 1);
         writeDataToOutputFile(toSort, outputFile);
     }
-
 }

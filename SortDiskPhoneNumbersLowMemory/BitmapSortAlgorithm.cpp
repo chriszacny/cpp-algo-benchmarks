@@ -11,23 +11,6 @@
 const int LOWER_NUMBER_BOUND = 1000000;
 const int UPPER_NUMBER_BOUND = 9999999;
 
-/*
- def bit_map_test():
- bit_map = []
- for i in range(START_VAL, RECORD_COUNT + 1):
- bit_map.append(False)
- with open(sys.argv[1], 'r') as r_hdl:
- for line in r_hdl:
- number = int(line)
- bit_map[number - START_VAL] = True
- with open('%s.bitmapsort' % sys.argv[2], 'w') as w_hdl:
- for i in range(START_VAL, RECORD_COUNT + 1):
- if bit_map[i - START_VAL] is True:
- w_hdl.write(str(i))
- w_hdl.write(os.linesep)
-*/
-
-
 void BitmapSortAlgorithm::sort(const char* pathToFile, const char* outputFile)
 {
     cout << "Sorting algorithm to use is: bitmap sort algorithm. Starting sort..." << endl;

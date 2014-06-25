@@ -59,7 +59,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/chris/Development/github.repos/SortDiskPhoneNumbersLowMemory/DerivedData/SortDiskPhoneNumbersLowMemory/Build/Products/Debug/input_data"
+            argument = "/Users/chris/Development/github.repos/SortDiskPhoneNumbersLowMemory/DerivedData/SortDiskPhoneNumbersLowMemory/Build/Products/Debug/input_data.1000000"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
