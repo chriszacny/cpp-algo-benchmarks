@@ -10,7 +10,7 @@
 #define __SortDiskPhoneNumbersLowMemory__PhoneNumberInputFile__
 
 #include "SortingAlgorithmEnum.h"
-#include "ISortingAlgorithm.h"
+#include "SortingAlgorithm.h"
 #include "PhoneNumberInputFile.h"
 #include "QuicksortAlgorithm.h"
 #include "SystemSortAlgorithm.h"
@@ -27,7 +27,7 @@ class PhoneNumberInputFile
         void removeExistingFileIfItExists(const char* outputFile);
         const char* _pathToFile;
         int* _recordCount;
-        std::map<SortingAlgorithmEnum, ISortingAlgorithm*> _sortingAlgorithms;    
+        map<SortingAlgorithmEnum, SortingAlgorithm*> _sortingAlgorithms;
 };
 
 #endif /* defined(__SortDiskPhoneNumbersLowMemory__PhoneNumberInputFile__) */

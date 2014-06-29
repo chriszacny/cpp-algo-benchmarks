@@ -12,11 +12,9 @@
 void SystemSortAlgorithm::sort(const char* pathToFile, const char* outputFile)
 {
     cout << "Sorting algorithm to use is: system sort algorithm. Starting sort..." << endl;
-    vector<int> toSort;
-    readDataIntoVector(toSort, pathToFile);
-    std::sort(toSort.begin(), toSort.end());
-    writeDataToOutputFile(toSort, outputFile);
-
+    readDataIntoVector(pathToFile);
+    std::sort(data.begin(), data.end());
+    writeDataToOutputFile(outputFile);
 }
 
 string SystemSortAlgorithm::getOutputFileName(const char* pathToFile)
@@ -26,7 +24,15 @@ string SystemSortAlgorithm::getOutputFileName(const char* pathToFile)
     return outputFileString;
 }
 
-void SystemSortAlgorithm::readDataIntoVector(vector<int> &toSort, const char* pathToFile)
+void SystemSortAlgorithm::writeDataToOutputFileImpl(ofstream &outputfileStream)
+{
+    for (int i = 0; i < data.size(); i++)
+    {
+        outputfileStream << data[i] << endl;
+    }
+}
+
+void SystemSortAlgorithm::readDataIntoVector(const char* pathToFile)
 {
     ifstream inputfileStream(pathToFile);
     string line;
@@ -34,7 +40,7 @@ void SystemSortAlgorithm::readDataIntoVector(vector<int> &toSort, const char* pa
     {
         while (getline(inputfileStream, line))
         {
-            toSort.push_back(atoi(line.c_str()));
+            data.push_back(atoi(line.c_str()));
         }
         inputfileStream.close();
     }

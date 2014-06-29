@@ -13,7 +13,7 @@
 		83D657FB19540560004D45AA /* SortDiskPhoneNumbersLowMemory.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83D657FA19540560004D45AA /* SortDiskPhoneNumbersLowMemory.1 */; };
 		83D65806195407FC004D45AA /* Program.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D65804195407FC004D45AA /* Program.cpp */; };
 		83D6580919541032004D45AA /* PhoneNumberInputFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D6580719541032004D45AA /* PhoneNumberInputFile.cpp */; };
-		83D6580D19544E7E004D45AA /* ISortingAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D6580B19544E7E004D45AA /* ISortingAlgorithm.cpp */; };
+		83D6580D19544E7E004D45AA /* SortingAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D6580B19544E7E004D45AA /* SortingAlgorithm.cpp */; };
 		83D658131954E7B1004D45AA /* QuicksortAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83D658111954E7B1004D45AA /* QuicksortAlgorithm.cpp */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +43,8 @@
 		83D6580719541032004D45AA /* PhoneNumberInputFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhoneNumberInputFile.cpp; sourceTree = "<group>"; };
 		83D6580819541032004D45AA /* PhoneNumberInputFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberInputFile.h; sourceTree = "<group>"; };
 		83D6580A1954144F004D45AA /* SortingAlgorithmEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortingAlgorithmEnum.h; sourceTree = "<group>"; };
-		83D6580B19544E7E004D45AA /* ISortingAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ISortingAlgorithm.cpp; sourceTree = "<group>"; };
-		83D6580C19544E7E004D45AA /* ISortingAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISortingAlgorithm.h; sourceTree = "<group>"; };
+		83D6580B19544E7E004D45AA /* SortingAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SortingAlgorithm.cpp; sourceTree = "<group>"; };
+		83D6580C19544E7E004D45AA /* SortingAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortingAlgorithm.h; sourceTree = "<group>"; };
 		83D658111954E7B1004D45AA /* QuicksortAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuicksortAlgorithm.cpp; sourceTree = "<group>"; };
 		83D658121954E7B1004D45AA /* QuicksortAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuicksortAlgorithm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,8 +86,8 @@
 				83D6580719541032004D45AA /* PhoneNumberInputFile.cpp */,
 				83D6580819541032004D45AA /* PhoneNumberInputFile.h */,
 				83D6580A1954144F004D45AA /* SortingAlgorithmEnum.h */,
-				83D6580B19544E7E004D45AA /* ISortingAlgorithm.cpp */,
-				83D6580C19544E7E004D45AA /* ISortingAlgorithm.h */,
+				83D6580B19544E7E004D45AA /* SortingAlgorithm.cpp */,
+				83D6580C19544E7E004D45AA /* SortingAlgorithm.h */,
 				83D658111954E7B1004D45AA /* QuicksortAlgorithm.cpp */,
 				83D658121954E7B1004D45AA /* QuicksortAlgorithm.h */,
 				8344C9BB1958C7190088D4D2 /* SystemSortAlgorithm.cpp */,
@@ -152,7 +152,7 @@
 				83D65806195407FC004D45AA /* Program.cpp in Sources */,
 				83D657F919540560004D45AA /* main.cpp in Sources */,
 				83D658131954E7B1004D45AA /* QuicksortAlgorithm.cpp in Sources */,
-				83D6580D19544E7E004D45AA /* ISortingAlgorithm.cpp in Sources */,
+				83D6580D19544E7E004D45AA /* SortingAlgorithm.cpp in Sources */,
 				8344C9BD1958C7190088D4D2 /* SystemSortAlgorithm.cpp in Sources */,
 				83D6580919541032004D45AA /* PhoneNumberInputFile.cpp in Sources */,
 				8344C9C31958CA8C0088D4D2 /* BitmapSortAlgorithm.cpp in Sources */,

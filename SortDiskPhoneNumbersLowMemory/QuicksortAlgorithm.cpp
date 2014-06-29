@@ -9,16 +9,16 @@
 #include "QuicksortAlgorithm.h"
 using namespace std;
 
-const int PASSES = 40;
-const int RANGE = 250000;
+const int PASSES = 80;
+const int RANGE = 125000;
 
-void QuicksortAlgorithm::quicksort(vector<int> &list, int l, int u)
+void QuicksortAlgorithm::quicksort(int l, int u)
 {
     if (l >= u)
     {
         return;
     }
-    int t = list[l];
+    int t = data[l];
     int i = l;
     int j = u + 1;
     while(1 == 1)
@@ -26,25 +26,25 @@ void QuicksortAlgorithm::quicksort(vector<int> &list, int l, int u)
         do
         {
             i = i + 1;
-        } while (i <= u && list[i] < t);
+        } while (i <= u && data[i] < t);
         
         do
         {
             j = j - 1;
-        } while (list[j] > t);
+        } while (data[j] > t);
         
         if (i > j)
         {
             break;
         }
-        swap(list[i] , list[j]);
+        swap(data[i], data[j]);
     }
-    swap(list[l], list[j]);
-    quicksort(list, l, j - 1);
-    quicksort(list, j + 1, u);
+    swap(data[l], data[j]);
+    quicksort(l, j - 1);
+    quicksort(j + 1, u);
 }
 
-void QuicksortAlgorithm::readDataIntoVector(vector<int> &toSort, int currentPass, const char* pathToFile)
+void QuicksortAlgorithm::readDataIntoVector(int currentPass, const char* pathToFile)
 {
     long lowerBound = currentPass * RANGE;
     long upperBound = ((currentPass + 1) * RANGE) - 1;
@@ -58,13 +58,11 @@ void QuicksortAlgorithm::readDataIntoVector(vector<int> &toSort, int currentPass
             int val = atoi(line.c_str());
             if (val >= lowerBound && val <= upperBound)
             {
-                toSort.push_back(val);
-                _pushbackCount++;
+                data.push_back(val);
             }
         }
         inputfileStream.close();
     }
-    cout << "Pushed back " << _pushbackCount << " times." << endl;
 }
 
 string QuicksortAlgorithm::getOutputFileName(const char* pathToFile)
@@ -74,16 +72,23 @@ string QuicksortAlgorithm::getOutputFileName(const char* pathToFile)
     return outputFileString;
 }
 
+void QuicksortAlgorithm::writeDataToOutputFileImpl(ofstream &outputfileStream)
+{
+    for (int i = 0; i < data.size(); i++)
+    {
+        outputfileStream << data[i] << endl;
+    }
+}
+
 void QuicksortAlgorithm::sort(const char* pathToFile, const char* outputFile)
 {
     cout << "Sorting algorithm to use is: Quicksort multi-pass algorithm. Starting sort..." << endl;
     // Make several passes over input file. Use Quicksort.
-    _pushbackCount = 0;
     for (int i = 0; i < PASSES; i++)
     {
-        vector<int> toSort;
-        readDataIntoVector(toSort, i, pathToFile);
-        quicksort(toSort, 0, toSort.size() - 1);
-        writeDataToOutputFile(toSort, outputFile);
+        data.clear();
+        readDataIntoVector(i, pathToFile);
+        quicksort(0, data.size() - 1);
+        writeDataToOutputFile(outputFile);
     }
 }

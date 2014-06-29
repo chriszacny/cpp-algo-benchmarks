@@ -14,17 +14,16 @@ const int UPPER_NUMBER_BOUND = 9999999;
 void BitmapSortAlgorithm::sort(const char* pathToFile, const char* outputFile)
 {
     cout << "Sorting algorithm to use is: bitmap sort algorithm. Starting sort..." << endl;
-    vector<bool> toSort;
-    initializeVectorToFalse(toSort);
-    readDataIntoVector(toSort, pathToFile);
-    writeDataToOutputFile(toSort, outputFile);
+    initializeVectorToFalse();
+    readDataIntoVector(pathToFile);
+    writeDataToOutputFile(outputFile);
 }
 
-void BitmapSortAlgorithm::initializeVectorToFalse(vector<bool> &bitmap)
+void BitmapSortAlgorithm::initializeVectorToFalse()
 {
     for (int i = LOWER_NUMBER_BOUND; i <= UPPER_NUMBER_BOUND; i++)
     {
-        bitmap.push_back(false);
+        bitmapData.push_back(false);
     }
 }
 
@@ -35,7 +34,7 @@ string BitmapSortAlgorithm::getOutputFileName(const char* pathToFile)
     return outputFileString;
 }
 
-void BitmapSortAlgorithm::readDataIntoVector(vector<bool> &bitmap, const char* pathToFile)
+void BitmapSortAlgorithm::readDataIntoVector(const char* pathToFile)
 {
     ifstream inputfileStream(pathToFile);
     string line;
@@ -44,24 +43,19 @@ void BitmapSortAlgorithm::readDataIntoVector(vector<bool> &bitmap, const char* p
         while (getline(inputfileStream, line))
         {
             int index = atoi(line.c_str());
-            bitmap[index - LOWER_NUMBER_BOUND] = true;
+            bitmapData[index - LOWER_NUMBER_BOUND] = true;
         }
         inputfileStream.close();
     }
 }
-void BitmapSortAlgorithm::writeDataToOutputFile(vector<bool> &bitmap, const char* outputFile)
+
+void BitmapSortAlgorithm::writeDataToOutputFileImpl(ofstream &outputfileStream)
 {
-    ofstream outputfileStream;
-    outputfileStream.open(outputFile, ofstream::out | ofstream::app);
-    if (outputfileStream.is_open())
+    for (int i = LOWER_NUMBER_BOUND; i <= UPPER_NUMBER_BOUND; i++)
     {
-        for (int i = LOWER_NUMBER_BOUND; i <= UPPER_NUMBER_BOUND; i++)
+        if (bitmapData[i - LOWER_NUMBER_BOUND] == true)
         {
-            if (bitmap[i - LOWER_NUMBER_BOUND] == true)
-            {
-                outputfileStream << i << endl;
-            }
+            outputfileStream << i << endl;
         }
     }
-    outputfileStream.close();
 }

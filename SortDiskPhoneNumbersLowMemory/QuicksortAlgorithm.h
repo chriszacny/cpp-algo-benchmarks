@@ -14,19 +14,21 @@
 #include <fstream>
 #include <string>
 #include <stdio.h>
-#include "ISortingAlgorithm.h"
+#include "SortingAlgorithm.h"
 using namespace std;
 
-class QuicksortAlgorithm : public ISortingAlgorithm
+class QuicksortAlgorithm : public SortingAlgorithm
 {
     public:
         void sort(const char* pathToFile, const char* outputFile) override;
         string getOutputFileName(const char* pathToFile) override;
+    protected:
+        void writeDataToOutputFileImpl(ofstream &outputfileStream) override;
     private:
-        void readDataIntoVector(vector<int> &toSort, int currentPass, const char* pathToFile);
-        void quicksort(vector<int> &list, int l, int u);
-        int _pushbackCount;
-
+        void readDataIntoVector(int currentPass, const char* pathToFile);
+        void qsortSwap(int i, int j);
+        void quicksort(int l, int u);
+        vector<int> data;
 };
 
 #endif /* defined(__SortDiskPhoneNumbersLowMemory__QuicksortAlgorithm__) */

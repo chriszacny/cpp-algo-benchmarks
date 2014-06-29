@@ -12,18 +12,20 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include "ISortingAlgorithm.h"
+#include "SortingAlgorithm.h"
 using namespace std;
 
-class BitmapSortAlgorithm : public ISortingAlgorithm
+class BitmapSortAlgorithm : public SortingAlgorithm
 {
     public:
         void sort(const char* pathToFile, const char* outputFile) override;
         string getOutputFileName(const char* pathToFile) override;
+    protected:
+        void writeDataToOutputFileImpl(ofstream &outputfileStream) override;
     private:
-        void initializeVectorToFalse(vector<bool> &bitmap);
-        void readDataIntoVector(vector<bool> &bitmap, const char* pathToFile);
-        void writeDataToOutputFile(vector<bool> &bitmap, const char* outputFile);
+        void initializeVectorToFalse();
+        void readDataIntoVector(const char* pathToFile);
+        vector<bool> bitmapData;
 };
 
 #endif /* defined(__SortDiskPhoneNumbersLowMemory__BitmapSort__) */

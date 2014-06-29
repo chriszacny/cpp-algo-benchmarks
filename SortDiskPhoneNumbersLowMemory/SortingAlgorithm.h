@@ -6,21 +6,21 @@
 //  Copyright (c) 2014 Chris Zacny. All rights reserved.
 //
 
-#ifndef __SortDiskPhoneNumbersLowMemory__ISortingAlgorithm__
-#define __SortDiskPhoneNumbersLowMemory__ISortingAlgorithm__
+#ifndef __SortDiskPhoneNumbersLowMemory__SortingAlgorithm__
+#define __SortDiskPhoneNumbersLowMemory__SortingAlgorithm__
 
 #include <string>
-#include <vector>
 #include <fstream>
 using namespace std;
 
-class ISortingAlgorithm
+class SortingAlgorithm
 {
     public:
         virtual void sort(const char* pathToFile, const char* outputFile) = 0;
         virtual string getOutputFileName(const char* pathToFile) = 0;
     protected:
-        void writeDataToOutputFile(vector<int> &toSort, const char* outputFile);
+        void writeDataToOutputFile(const char* outputFile);
+        virtual void writeDataToOutputFileImpl(ofstream &outputfileStream) = 0;
 };
 
-#endif /* defined(__SortDiskPhoneNumbersLowMemory__ISortingAlgorithm__) */
+#endif /* defined(__SortDiskPhoneNumbersLowMemory__SortingAlgorithm__) */

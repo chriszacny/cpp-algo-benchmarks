@@ -13,16 +13,19 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
-#include "ISortingAlgorithm.h"
+#include "SortingAlgorithm.h"
 using namespace std;
 
-class SystemSortAlgorithm : public ISortingAlgorithm
+class SystemSortAlgorithm : public SortingAlgorithm
 {
     public:
         void sort(const char* pathToFile, const char* outputFile) override;
         string getOutputFileName(const char* pathToFile) override;
+    protected:
+        void writeDataToOutputFileImpl(ofstream &outputfileStream) override;
     private:
-        void readDataIntoVector(vector<int> &toSort, const char* pathToFile);
+        void readDataIntoVector(const char* pathToFile);
+        vector<int> data;
 
 };
 #endif /* defined(__SortDiskPhoneNumbersLowMemory__SystemSort__) */

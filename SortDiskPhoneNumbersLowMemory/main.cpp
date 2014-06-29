@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
         int sortingAlgorithmToUse = atoi(argv[2]);
         cout << "Input file is: " << phoneNumberInputFile << endl;
         Program* p = new Program(phoneNumberInputFile, sortingAlgorithmToUse);
-        retVal = p->Program::Run();
+        retVal = p->Run();
     }
     else
     {

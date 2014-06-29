@@ -12,11 +12,11 @@ using namespace std;
 PhoneNumberInputFile::PhoneNumberInputFile(const char* pathToFile)
 {
     _pathToFile = pathToFile;
-    ISortingAlgorithm* quickSort = new QuicksortAlgorithm();
+    SortingAlgorithm* quickSort = new QuicksortAlgorithm();
     _sortingAlgorithms[SortingAlgorithmEnum::Quicksort] = quickSort;
-    ISortingAlgorithm* systemSort = new SystemSortAlgorithm();
+    SortingAlgorithm* systemSort = new SystemSortAlgorithm();
     _sortingAlgorithms[SortingAlgorithmEnum::SystemSortSort] = systemSort;
-    ISortingAlgorithm* bitmapSort = new BitmapSortAlgorithm();
+    SortingAlgorithm* bitmapSort = new BitmapSortAlgorithm();
     _sortingAlgorithms[SortingAlgorithmEnum::BitMapStructure] = bitmapSort;
 }
 
